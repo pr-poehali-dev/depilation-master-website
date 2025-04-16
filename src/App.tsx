@@ -10,25 +10,28 @@ import ContactsPage from "./pages/ContactsPage";
 import AboutPage from "./pages/AboutPage";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+function App() {
+  // Создаем клиент запросов внутри компонента, а не вне его
+  const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/booking" element={<BookingPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/booking" element={<BookingPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/contacts" element={<ContactsPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+}
 
 export default App;
